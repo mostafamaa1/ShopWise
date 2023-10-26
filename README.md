@@ -1,37 +1,88 @@
-## Price Wise
-A WebScraper Project built with NextJS, NodeJS, MongoDB.
+# ShopWise
+A Web Scraping project using NextJs, MongoDB and Tailwind CSS.
 
-## Getting Started
+## Live 
+https://shopwise-m1dev.vercel.app/
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This project is a web scraping application designed to collect product information from Amazon. It utilizes Node.js with the Next.js framework for the web application, MongoDB for data storage, and BrightData for scraping, and send email notifications to users when there are changes in the product details. The project includes a web application with a user-friendly interface that allows users to search for products, view product details, and subscribe to product updates. 
+
+The server-side logic is implemented with serverless functions that handle various tasks such as connecting to the database, scraping product details, updating product information, and sending email notifications. 
+
+## Project Structure
+
+```plaintext
+amazon-scraper/
+|-- src/
+|   |-- scraper/
+|   |   |-- amazonScraper.js          # Amazon scraper module
+|   |-- database/
+|   |   |-- mongoose.js               # MongoDB connection setup
+|   |-- utils/
+|   |   |-- common.js                 # Common utility functions
+|-- node_modules/
+|-- .gitignore
+|-- package.json
+|-- README.md
+|-- index.js                           # Main script to run the scraping process
 ```
+# Technologies and Frameworks
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Next.js
+- Tailwind CSS
+- TypeScript
+- MongoDB
+- Nodemailer
+- Axios
+- Cheerio
+# Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Follow these steps to install and run the project:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. **Clone the repository**
 
-## Learn More
+   Open your terminal and run the following command to clone the repository:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   git clone https://github.com/mostafamaa1/web-scraper.git
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Navigate to the project directory**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```bash
+   cd web-scraper
+   ```
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Install the required packages**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   The project requires several packages to be installed. Run the following command to install them:
+
+   ```bash
+   npm i
+   ```
+
+4. **Install the required fonts**
+
+   The project requires the "font-inter" and "font-spaceGrotesk" fonts to be available. You can download them from [Google Fonts](https://fonts.google.com/).
+
+5. **Set up the environment variables**
+
+   The project requires the MONGODB_URI environment variable to be defined. You can do this in a `.env` file in the root of your project:
+
+   ```bash
+   MONGODB_URI=your_mongodb_uri
+   ```
+
+6. **Start the server**
+
+   Run the following command to start the server:
+
+   ```bash
+   npm run start
+   ```
+
+Now, you should be able to access the project at `http://localhost:3000`.
+
+Please note that the project requires the "m.media-amazon.com" domain to be accessible for image handling. If you are unable to access this domain, you may encounter issues with image loading.
