@@ -13,20 +13,33 @@ The server-side logic is implemented with serverless functions that handle vario
 ## Project Structure
 
 ```plaintext
-amazon-scraper/
-|-- src/
-|   |-- scraper/
-|   |   |-- amazonScraper.js          # Amazon scraper module
-|   |-- database/
-|   |   |-- mongoose.js               # MongoDB connection setup
-|   |-- utils/
-|   |   |-- common.js                 # Common utility functions
+ShopWise/
+|-- app/
+|   |-- product/
+|        |-- page.tsx                # Products page
+|   |-- page.tsx                     # Index page
+|-- components/                      # Project components                  
+|-- lib/                          
+|   |-- actions/
+|       |-- index.ts                 # Main script to run the scraping process
+|      |-- scraper/                    
+|          |-- index.ts              # Amazon scraper module
+|   |-- models/
+|       |-- product.models.ts        # Product Schema module
+|   |-- nodemailer/
+|       |-- index.ts                 # Mail Service module
+|   |-- mongoose.ts                  # MongoDB connection setup
+|   |-- utils.ts                     # Utilities module
 |-- node_modules/
 |-- .gitignore
 |-- package.json
 |-- README.md
-|-- index.js                           # Main script to run the scraping process
 ```
+
+## Mind Map
+
+![System Design](./shopWise-mindMap.png)
+
 # Technologies and Frameworks
 
 - Next.js
@@ -45,13 +58,14 @@ Follow these steps to install and run the project:
    Open your terminal and run the following command to clone the repository:
 
    ```bash
-   git clone https://github.com/mostafamaa1/web-scraper.git
+   git clone 
+   https://github.com/mostafamaa1/shopwise.git
    ```
 
 2. **Navigate to the project directory**
 
    ```bash
-   cd web-scraper
+   cd shopwise
    ```
 
 
@@ -72,7 +86,10 @@ Follow these steps to install and run the project:
    The project requires the MONGODB_URI environment variable to be defined. You can do this in a `.env` file in the root of your project:
 
    ```bash
+   BRIGHT_DATA_USERNAME=BRIGHT_DATA_USERNAME
+   BRIGHT_DATA_PASSWORD=BRIGHT_DATA_PASSWORD
    MONGODB_URI=your_mongodb_uri
+   EMAIL_PASSWORD=for_nodemailer_email
    ```
 
 6. **Start the server**
