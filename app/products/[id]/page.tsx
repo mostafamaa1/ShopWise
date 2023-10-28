@@ -85,10 +85,11 @@ const ProductDetails = async ({ params: { id } }: Props) => {
           <div className="product-info">
             <div className="flex flex-col gap-2">
               <p className="text-[34px] text-secondary font-bold">
-                {product.currency} {formatNumber(product.currentPrice)}
+              {product.currency} {parseFloat(formatNumber(product.currentPrice)) > 0 ? formatNumber(product.currentPrice) : formatNumber(product.averagePrice)}
+
               </p>
               <p className="text-[21px] text-black opacity-50 line-through">
-                {product.currency} {formatNumber(product.originalPrice)}
+              {product.currency} {parseFloat(formatNumber(product.originalPrice)) > 0 ? formatNumber(product.originalPrice) : formatNumber(product.currentPrice)}
               </p>
             </div>
 
@@ -131,7 +132,8 @@ const ProductDetails = async ({ params: { id } }: Props) => {
               <PriceInfoCard 
                 title="Current Price"
                 iconSrc="/assets/icons/price-tag.svg"
-                value={`${product.currency} ${formatNumber(product.currentPrice)}`}
+                value={`${product.currency} ${parseFloat(formatNumber(product.currentPrice)) > 0 ? formatNumber(product.currentPrice) : formatNumber(product.averagePrice)}`}
+
               />
               <PriceInfoCard 
                 title="Average Price"
@@ -141,12 +143,12 @@ const ProductDetails = async ({ params: { id } }: Props) => {
               <PriceInfoCard 
                 title="Highest Price"
                 iconSrc="/assets/icons/arrow-up.svg"
-                value={`${product.currency} ${formatNumber(product.highestPrice)}`}
+                value={`${product.currency} ${parseFloat(formatNumber(product.highestPrice)) > 0 ? formatNumber(product.highestPrice) : formatNumber(product.originalPrice)}`}
               />
               <PriceInfoCard 
                 title="Lowest Price"
                 iconSrc="/assets/icons/arrow-down.svg"
-                value={`${product.currency} ${formatNumber(product.lowestPrice)}`}
+                value={`${product.currency} ${parseFloat(formatNumber(product.lowestPrice)) > 0 ? formatNumber(product.lowestPrice) : formatNumber(product.averagePrice)}`}
               />
             </div>
           </div>

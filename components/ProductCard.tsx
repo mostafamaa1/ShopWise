@@ -30,7 +30,7 @@ const ProductCard = ({ product }: Props) => {
 
           <p className="text-black text-lg font-semibold">
             <span>{product?.currency}</span>
-            <span>{product?.currentPrice}</span>
+            <span>{product?.currentPrice > 0 ? product?.currentPrice : product?.averagePrice.toFixed(0)}</span>
           </p>
         </div>
       </div>
