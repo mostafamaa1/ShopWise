@@ -85,11 +85,11 @@ const ProductDetails = async ({ params: { id } }: Props) => {
           <div className="product-info">
             <div className="flex flex-col gap-2">
               <p className="text-[34px] text-secondary font-bold">
-              {product.currency} {parseFloat(formatNumber(product.currentPrice)) > 0 ? formatNumber(product.currentPrice) : formatNumber(product.averagePrice)}
+              {product.currency} {parseFloat(formatNumber(product.currentPrice)) > 1 ? formatNumber(product.currentPrice) : formatNumber(product.averagePrice)}
 
               </p>
               <p className="text-[21px] text-black opacity-50 line-through">
-              {product.currency} {parseFloat(formatNumber(product.originalPrice)) > 0 ? formatNumber(product.originalPrice) : formatNumber(product.currentPrice)}
+              {product.currency} {parseFloat(formatNumber(product.originalPrice)) > 1 ? formatNumber(product.originalPrice) : formatNumber(product.averagePrice)}
               </p>
             </div>
 
@@ -143,7 +143,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
               <PriceInfoCard 
                 title="Highest Price"
                 iconSrc="/assets/icons/arrow-up.svg"
-                value={`${product.currency} ${parseFloat(formatNumber(product.highestPrice)) > 0 ? formatNumber(product.highestPrice) : formatNumber(product.originalPrice)}`}
+                value={`${product.currency} ${parseFloat(formatNumber(product.highestPrice)) == parseFloat(formatNumber(product.averagePrice)) ? formatNumber(product.originalPrice) : formatNumber(product.highestPrice)}`}
               />
               <PriceInfoCard 
                 title="Lowest Price"
