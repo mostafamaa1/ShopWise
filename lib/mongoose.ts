@@ -10,7 +10,10 @@ export const connectToDB = async () => {
     if(isConnected) return console.log('=> using existing database connection')
 
     try {
-        await mongoose.connect(process.env.MONGODB_URI)
+        await mongoose.connect(process.env.MONGODB_URI,
+            {
+                dbName: process.env.DATABASE
+            })
 
         isConnected = true;
 

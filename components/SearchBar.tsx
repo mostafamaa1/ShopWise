@@ -49,7 +49,7 @@ onSubmit={handleSubmit}>
     type="text"
     value={searchPrompt}
     onChange={(e) => setSearchPrompt(e.target.value)}
-    placeholder="Enter product link"
+    placeholder="Enter product link (only Amazon Products)"
     className="searchbar-input"
     />
 
