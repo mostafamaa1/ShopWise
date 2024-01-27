@@ -2,7 +2,7 @@ import Modal from "@/components/Modal";
 import PriceInfoCard from "@/components/PriceInfoCard";
 import ProductCard from "@/components/ProductCard";
 import { getProductById, getSimilarProducts } from "@/lib/actions"
-import { formatNumber } from "@/lib/utils";
+import { extractCompanyName, formatNumber } from "@/lib/utils";
 import { Product } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,8 +26,8 @@ const ProductDetails = async ({ params: { id } }: Props) => {
           <Image 
             src={product.image}
             alt={product.title}
-            width={580}
-            height={400}
+            width={480}
+            height={300}
             className="mx-auto"
           />
         </div>
@@ -42,9 +42,9 @@ const ProductDetails = async ({ params: { id } }: Props) => {
               <Link
                 href={product.url}
                 target="_blank"
-                className="text-base text-black opacity-50"
+                className="text-base text-black underline capitalize opacity-50"
               >
-                Visit Product
+                {extractCompanyName(product.url)}
               </Link>
             </div>
 
@@ -89,7 +89,8 @@ const ProductDetails = async ({ params: { id } }: Props) => {
 
               </p>
               <p className="text-[21px] text-black opacity-50 line-through">
-              {product.currency} {parseFloat(formatNumber(product.originalPrice)) > 1 ? formatNumber(product.originalPrice) : formatNumber(product.averagePrice)}
+              {product.currency} {formatNumber(product.originalPrice) > formatNumber(product.highestPrice) ? formatNumber(product.originalPrice) : formatNumber(product.originalPrice) <= 1 ? formatNumber(product.averagePrice) : formatNumber(product.highestPrice)}
+
               </p>
             </div>
 
@@ -127,9 +128,9 @@ const ProductDetails = async ({ params: { id } }: Props) => {
             </div>
           </div>
 
-          <div className="my-7 flex flex-col gap-5">
+          <div className="my-10 flex flex-col gap-5">
             <div className="flex gap-5 flex-wrap">
-              <PriceInfoCard 
+              {/* <PriceInfoCard 
                 title="Current Price"
                 iconSrc="/assets/icons/price-tag.svg"
                 value={`${product.currency} ${parseFloat(formatNumber(product.currentPrice)) > 0 ? formatNumber(product.currentPrice) : formatNumber(product.averagePrice)}`}
@@ -139,11 +140,11 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                 title="Average Price"
                 iconSrc="/assets/icons/chart.svg"
                 value={`${product.currency} ${formatNumber(product.averagePrice)}`}
-              />
+              /> */}
               <PriceInfoCard 
                 title="Highest Price"
                 iconSrc="/assets/icons/arrow-up.svg"
-                value={`${product.currency} ${parseFloat(formatNumber(product.highestPrice)) == parseFloat(formatNumber(product.averagePrice)) ? formatNumber(product.originalPrice) : formatNumber(product.highestPrice)}`}
+                value={`${product.currency} ${formatNumber(product.originalPrice) > formatNumber(product.highestPrice) ? formatNumber(product.originalPrice) : formatNumber(product.originalPrice) <= 1 ? formatNumber(product.averagePrice) : formatNumber(product.highestPrice)}`}
               />
               <PriceInfoCard 
                 title="Lowest Price"

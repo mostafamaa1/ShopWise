@@ -117,3 +117,19 @@ export const formatNumber = (num: number = 0) => {
     maximumFractionDigits: 0,
   });
 };
+
+export const extractCompanyName = (url: string) => {
+  // Remove protocol (http://, https://) and www.
+  const cleanedUrl = url.replace(/^(https?:\/\/)?(www\.)?/i, '');
+
+  // Extract the company name using regex
+  const match = cleanedUrl.match(/^([a-zA-Z0-9-]+)\./);
+
+  // Check if a match is found
+  if (match && match[1]) {
+    return match[1];
+  }
+
+  // If no match is found, return null or handle accordingly
+  return null;
+}
