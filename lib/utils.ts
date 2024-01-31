@@ -118,7 +118,7 @@ export const formatNumber = (num: number = 0) => {
   });
 };
 
-export const extractCompanyName = (url: string) => {
+export const extractCompanyName = (url: string): string => {
   // Remove protocol (http://, https://) and www.
   const cleanedUrl = url.replace(/^(https?:\/\/)?(www\.)?/i, '');
 
@@ -130,6 +130,6 @@ export const extractCompanyName = (url: string) => {
     return match[1];
   }
 
-  // If no match is found, return null or handle accordingly
-  return null;
-}
+  // If no match is found, return a default value or throw an error
+  throw new Error('Company name not found in the URL');
+};

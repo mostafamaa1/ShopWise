@@ -44,7 +44,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                 target="_blank"
                 className="text-base text-black underline capitalize opacity-50"
               >
-                {extractCompanyName(product.url)}
+                {product.source || extractCompanyName(product.url)}
               </Link>
             </div>
 

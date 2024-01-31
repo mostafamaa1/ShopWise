@@ -1,9 +1,12 @@
-import { extractCurrency, extractDescription, extractPrice } from "@/lib/utils";
+import { extractCompanyName, extractCurrency, extractDescription, extractPrice } from "@/lib/utils";
 import axios from "axios";
 import * as cheerio from "cheerio";
 
-export async function scrapeAmazonProduct(url: string) {
+export async function scrapeProduct(url: string) {
     if(!url) return;
+
+    // Extract the platform name from the URL
+    const platform = extractCompanyName(url).toLowerCase();
 
     // BrightData proxy configuration
     const username = String(process.env.BRIGHT_DATA_USERNAME)
@@ -70,6 +73,7 @@ export async function scrapeAmazonProduct(url: string) {
             isOutOfStock: outOfStock,
             stars: 4.5,
             reviewsCount: 100,
+            source: platform,
             description,
             lowestPrice: Number(currentPrice) || Number(originalPrice),
             highestPrice: Number(originalPrice) || Number(currentPrice),
