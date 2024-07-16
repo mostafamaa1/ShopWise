@@ -62,7 +62,7 @@ export async function scrapeProduct(url: string) {
         // Contsruct data object with scraped information
         const data = {
             url,
-            currency: 'E£',
+            currency: currency,
             image: imageUrls[0],
             title,
             currentPrice: Number(currentPrice) || Number(originalPrice),
