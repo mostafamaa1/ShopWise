@@ -46,7 +46,8 @@ export async function scrapeProduct(url: string) {
             $('#listPrice'),
         )
 
-        const currency = extractCurrency($('.a-price-symbol'))
+        let currency;
+        // extractCurrency($('.a-price-symbol'))
 
         const discountRate = $('.savingsPercentage').text().replace(/[-%]/g, '');
 
@@ -58,6 +59,17 @@ export async function scrapeProduct(url: string) {
         const imageUrls = Object.keys(JSON.parse(images))
 
         const description = extractDescription($);
+
+        if(url.includes('.sa')) {
+            currency = 'SAR'
+        } 
+        else if(url.includes('.eg')) {
+            currency = 'E£'
+        } else if(url.includes('.ae')) {
+            currency = 'AED'
+        } else {
+            currency = '$'
+        }
 
         // Contsruct data object with scraped information
         const data = {

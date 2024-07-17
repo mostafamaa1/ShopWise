@@ -21,6 +21,16 @@ const ProductDetails = async ({ params: { id } }: Props) => {
 
   return (
     <div className="product-container">
+    <Link href="/" className="flex items-center">
+      <Image 
+        src="/assets/icons/arrow-right.svg"
+        alt="back"
+        width={24}
+        height={24}
+        className="mr-2 transform rotate-180"
+      />
+      <span className="ml-1 font-medium text-lg">Back</span>
+    </Link>
       <div className="flex gap-28 xl:flex-row flex-col">
         <div className="product-image">
           <Image 
@@ -130,7 +140,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
 
           <div className="my-10 flex flex-col gap-5">
             <div className="flex gap-5 flex-wrap">
-              {/* <PriceInfoCard 
+              <PriceInfoCard 
                 title="Current Price"
                 iconSrc="/assets/icons/price-tag.svg"
                 value={`${product.currency} ${parseFloat(formatNumber(product.currentPrice)) > 0 ? formatNumber(product.currentPrice) : formatNumber(product.averagePrice)}`}
@@ -140,7 +150,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                 title="Average Price"
                 iconSrc="/assets/icons/chart.svg"
                 value={`${product.currency} ${formatNumber(product.averagePrice)}`}
-              /> */}
+              />
               <PriceInfoCard 
                 title="Highest Price"
                 iconSrc="/assets/icons/arrow-up.svg"
