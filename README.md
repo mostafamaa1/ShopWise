@@ -2,7 +2,7 @@
 A Web Scraping project using NextJs, MongoDB and Tailwind CSS.
 
 ## Live 
-https://shopwise-m1dev.vercel.app/
+https://shopwise-inky.vercel.app
 
 ## Overview
 
