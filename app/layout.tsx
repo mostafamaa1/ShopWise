@@ -18,12 +18,12 @@ export const metadata: Metadata = {
     siteName: 'Shopwise',
     images: [
       {
-        url: 'https://shopwise-inky.vercel.app/shopwise1.png', // Must be an absolute URL
+        url: '../public/shopwise1.png', // Must be an absolute URL
         width: 800,
         height: 600,
       },
       {
-        url: 'https://shopwise-inky.vercel.app/shopwise1.png', // Must be an absolute URL
+        url: '../public/shopwise1.png', // Must be an absolute URL
         width: 1800,
         height: 1600,
         alt: '',
