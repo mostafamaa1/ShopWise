@@ -11,8 +11,27 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'ShopWise',
-  description: 'Track product prices effortlessly and save money on your online shopping.',
+  openGraph: {
+    title: 'ShopWise',
+    description: 'Track product prices effortlessly and save money on your online shopping.',
+    url: 'https://shopwise-inky.vercel.app',
+    siteName: 'Shopwise',
+    images: [
+      {
+        url: 'https://shopwise-inky.vercel.app/shopwise1.png', // Must be an absolute URL
+        width: 800,
+        height: 600,
+      },
+      {
+        url: 'https://shopwise-inky.vercel.app/shopwise1.png', // Must be an absolute URL
+        width: 1800,
+        height: 1600,
+        alt: '',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({
